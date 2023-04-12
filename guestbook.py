@@ -20,11 +20,7 @@ def EditEntry(index, entry):
     entries = f.read()
     f.close()
     entries = entries.splitlines()
-
-    if int(index) >= 1:
-        index = index - 1
-
-    entries[int(index)] = entry
+    entries[int(-index)] = entry
 
     with open(FILE_NAME, "w") as f:
         f.write('\n'.join(entries))
