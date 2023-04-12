@@ -23,6 +23,6 @@ class TestClass:
         with open('guestbook.txt', 'r') as f:
             entries = f.read()
         entries = entries.splitlines()
-        assert entry == entries[1]
+        assert entry == entries[0]
             
         
