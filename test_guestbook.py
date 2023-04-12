@@ -16,4 +16,13 @@ class TestClass:
         with open('guestbook.txt', 'r') as f:
             entries = f.read()
         assert entries == Guestbook.GetAllEntries()
+    
+    def test_Edit_Entry(self):
+        entry = "This entry was edited"
+        Guestbook.EditEntry(1, entry)
+        with open('guestbook.txt', 'r') as f:
+            entries = f.read()
+        entries = entries.splitlines()
+        assert entry == entries[1]
+            
         
