@@ -2,7 +2,7 @@ import guestbook as Guestbook
 
 class TestClass:
 
-    def test_Add_Entry():
+    def test_Add_Entry(self):
         entry = "this is a test entry"
         Guestbook.AddEntry(entry)
 
