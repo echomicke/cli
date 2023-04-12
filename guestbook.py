@@ -1,3 +1,4 @@
+import sys
 FILE_NAME = "guestbook.txt"
 
 def AddEntry(entry):
@@ -20,7 +21,7 @@ def EditEntry(index, entry):
     entries = f.read()
     f.close()
     entries = entries.splitlines()
-    entries[int(-index)] = entry
+    entries[-int(index)] = entry
 
     with open(FILE_NAME, "w") as f:
         f.write('\n'.join(entries))
@@ -33,8 +34,25 @@ def DeleteEntry(index):
     entries = f.read()
     f.close()
     entries = entries.splitlines()
-    entries.pop(-index)
+    entries.pop(-int(index))
 
     with open(FILE_NAME, "w") as f:
         f.write('\n'.join(entries))
         f.write("\n")
+
+def Menu():
+    if sys.argv[1] == "new":
+        AddEntry(sys.argv[2])
+
+    elif sys.argv[1] == "list":
+        GetAllEntries()
+
+    elif sys.argv[1] == "edit":
+        EditEntry(sys.argv[2], sys.argv[3])
+    
+    elif sys.argv[1] == "delete":
+        DeleteEntry(sys.argv[2])
+
+
+if __name__ == '__main__':
+    Menu()
