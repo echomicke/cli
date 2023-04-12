@@ -40,6 +40,7 @@ class TestClass:
 
     def test_Export_to_json(self):
         entries = Guestbook.GetAllEntries()
+        entries = entries.splitlines()
         json_data = json.dumps(entries.pop(len(entries)-1))
 
         assert json_data == Guestbook.Export()
