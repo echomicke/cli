@@ -25,4 +25,14 @@ class TestClass:
         entries = entries.splitlines()
         assert entry == entries[-1]
             
+    def test_Delete_Entry(self):
+        indx = 1
+        entry = "Entry to be deleted"
+        Guestbook.AddEntry(entry)
+        Guestbook.DeleteEntry(indx)
+
+        with open('guestbook.txt', 'r') as f:
+            entries = f.read()
         
+        entries = entries.splitlines()
+        assert entries[len(entries)-1] != entry
