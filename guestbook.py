@@ -1,4 +1,6 @@
 import sys
+import json
+
 FILE_NAME = "guestbook.txt"
 
 def AddEntry(entry):
@@ -40,6 +42,16 @@ def DeleteEntry(index):
         f.write('\n'.join(entries))
         f.write("\n")
 
+def Export():
+    "Prints out all the entries in the file in json format and returns it"
+    with open(FILE_NAME, "r") as f:
+        entries = f.read()
+    entries = entries.splitlines()
+    entries.pop(len(entries)-1)
+    json_data = json.dumps(entries)
+    print (json_data)
+    return json_data
+
 def Menu():
     if sys.argv[1] == "new":
         AddEntry(sys.argv[2])
@@ -53,6 +65,8 @@ def Menu():
     elif sys.argv[1] == "delete":
         DeleteEntry(sys.argv[2])
 
+    elif sys.argv[1] == "export":
+        Export()
 
 if __name__ == '__main__':
     Menu()
