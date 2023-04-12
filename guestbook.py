@@ -25,3 +25,16 @@ def EditEntry(index, entry):
     with open(FILE_NAME, "w") as f:
         f.write('\n'.join(entries))
         f.write("\n")
+
+def DeleteEntry(index):
+    """Deletes an entry in the file \n
+    index is the line number(from  the bottom) to be deleted"""
+    f = open(FILE_NAME)
+    entries = f.read()
+    f.close()
+    entries = entries.splitlines()
+    entries.pop(-index)
+
+    with open(FILE_NAME, "w") as f:
+        f.write('\n'.join(entries))
+        f.write("\n")
