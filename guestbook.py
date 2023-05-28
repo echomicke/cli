@@ -84,9 +84,6 @@ def Menu():
     elif sys.argv[1] == "export":
         Export()
 
-#PrintEntries()
-#deleteEmptyRowsInFile()
-
 if __name__ == '__main__':
     Menu()
     deleteEmptyRowsInFile()
