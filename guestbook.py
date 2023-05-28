@@ -34,20 +34,28 @@ def EditEntry(index, entry):
     """Replaces an entry in a file with the given entry.\n
     index is the number of the line to be replaced \n
     entry is the data to add to the file"""
-    entries = GetFileContents()
-    entries = entries.splitlines()
-    entries[-int(index)] = entry
+    try:
+        entries = GetFileContents()
+        entries = entries.splitlines()
+        entries[-int(index)] = entry
 
-    ReplaceFileContent(entries)
+        ReplaceFileContent(entries)
+    except IndexError:
+        print("That entry does not exist")
+        sys.exit()
 
 
 def DeleteEntry(index):
     """Deletes an entry in the file \n
     index is the line number(from  the bottom) to be deleted"""
-    entries = GetFileContents()
-    entries = entries.splitlines()
-    entries.pop(-int(index))
-    ReplaceFileContent(entries)
+    try:
+        entries = GetFileContents()
+        entries = entries.splitlines()
+        entries.pop(-int(index))
+        ReplaceFileContent(entries)
+    except IndexError:
+        print("That entry does not exist")
+        sys.exit()
 
 def Export():
     "Prints out all the entries in the file in json format and returns it"
